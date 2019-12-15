@@ -1,22 +1,26 @@
-var uiController = (function() {
-  var x = 100;
-  function add(y) {
-    return x + y;
+// Дэлгэцтэй ажиллах контроллер
+var uiController = (function() {})();
+
+// Санхүүтэй ажиллах контроллер
+var financeController = (function() {})();
+
+// Програмын холбогч контроллер
+var appController = (function(uiController, financeController) {
+  function ctrlAddItem() {
+    // 1. Оруулах өгөгдлийг дэлгэцээс олж авна.
+    // 2. Олж авсан өгөгдлүүдээ санхүүгийн кинтролерт дамжуулж тэнд хадгална.
+    // 3. Олж авсан өгөгдлүүдээ вебийн тохирох хэсэгт гаргана.
+    // 4.Төсвийг тооцоолно.
+    // 5. Эцсийн үлдэгдэл, тооцоог дэлгэцэнд гаргана.
   }
 
-  return {
-    publicAdd: function(a) {
-      a = add(a);
-      console.log("Боловцруулсан утга : " + a);
-    }
-  };
-})();
+  document.querySelector(".add__btn").addEventListener("click", function() {
+    ctrlAddItem();
+  });
 
-var financeController = (function() {})();
-var appController = (function(uiController, financeController) {})(
-  uiController,
-  financeController
-);
-// uiController.publicAdd(999);
-// uiController.publicAdd(1100);
-//
+  document.addEventListener("keypress", function(event) {
+    if (event.keyCode === 13 || event.which === 13) {
+      ctrlAddItem();
+    }
+  });
+})(uiController, financeController);
