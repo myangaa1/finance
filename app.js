@@ -12,6 +12,7 @@ var appController = (function(uiController, financeController) {
     // 3. Олж авсан өгөгдлүүдээ вебийн тохирох хэсэгт гаргана.
     // 4.Төсвийг тооцоолно.
     // 5. Эцсийн үлдэгдэл, тооцоог дэлгэцэнд гаргана.
+    console.log("Enter daragdsan");
   }
 
   document.querySelector(".add__btn").addEventListener("click", function() {
