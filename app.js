@@ -48,18 +48,13 @@ var financeController = (function() {
     addItem: function(type, desc, val) {
       var item, id;
 
-      if (data.items[type].length === 0) {
-        id = 1;
-        console.log("items массивийн урт = 0 id : " + id);
-      } else {
-        id = data.items[type][data.items[type].length - 1].id + 1;
-      }
+      id =
+        data.items[type].length === 0
+          ? 1
+          : data.items[type][data.items[type].length - 1].id + 1;
 
-      if (type === "inc") {
-        item = new Income(id, desc, val);
-      } else {
-        item = new Expense(id, desc, val);
-      }
+      item =
+        type === "inc" ? new Income(id, desc, val) : new Expense(id, desc, val);
 
       data.items[type].push(item);
     },
@@ -77,6 +72,7 @@ var appController = (function(uiController, financeController) {
 
     // 2. Олж авсан өгөгдлүүдээ санхүүгийн кинтролерт дамжуулж тэнд хадгална.
     financeController.addItem(input.type, input.description, input.value);
+    console.log(financeController.getData());
     // 3. Олж авсан өгөгдлүүдээ вебийн тохирох хэсэгт гаргана.
     // 4.Төсвийг тооцоолно.
     // 5. Эцсийн үлдэгдэл, тооцоог дэлгэцэнд гаргана.
